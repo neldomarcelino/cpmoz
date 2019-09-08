@@ -1,0 +1,17 @@
+<% include header %>
+    <div class="header-error">
+        <header>
+            <h1>Ntalk</h1>
+            <h4 class="h4-error">Aconteceu algo terrível! :(</h4>
+        </header>
+        <p>
+            Veja os detalhes do erro:
+            <br>
+            <h1><%= message %></h1>
+            <h2><%= error.status %></h2>
+            <pre><%= error.stack %></pre>
+        </p>
+        <hr>
+        <p>Que tal voltar <a href="/">home page?</a> :)</p>
+    </div>
+<% include footer %>

@@ -1,0 +1,11 @@
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+module.exports = function(app){
+	var user = app.controllers.user;
+	
+	app.get('/login', user.login);
+	app.post('/travel', urlencodedParser, user.travel);
+	app.get('/logout', user.logout);
+};

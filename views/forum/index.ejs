@@ -1,0 +1,146 @@
+<% include ../header %>
+
+
+<div id="modal" class="window-modal-style">
+    <div id="div-close-modal"></div>
+
+    
+    <div class="modal-add-forum">
+        <div class="addNewForumButtom">
+            <h2 class="title-add-forum">Novo Forum</h2>
+            <ul class="ul-button">
+                <li>
+                    <input type="submit" id="submit" class="button-save-forum" value="Confirmar">
+                </li>
+                <li>
+                    <input type="reset" id="reset" class="button-save-forum " value="Cancelar">
+                </li>    
+            </ul>
+        </div>
+        <form action="/newForum" method="post" class="form-new-forum" id="form">
+            
+            <div class="wrap-input100 m-b-26">
+                <span class="label">Titulo</span>
+                <input id="email" class="input100" type="text" name="nome" placeholder="Titulo do Forum">
+                <span class="focus-input100"></span>
+            </div>
+            <div >
+                <span class="label"> Introducao</span>
+                <textarea id="email" class="textarea" type="text" name="nome" placeholder="Passagem">
+                </textarea>
+            </div>
+        </form>		
+    </div>
+</div>
+
+    <br>
+    <br>
+    <aside class="other-forum">
+        <br>
+        <h5 class="title-other-forum-h3">Outros FoRum</h5>
+        
+        <form class="form-forum-search" action="/searchForum" method="POST">
+            <input class="search-forum-input" type="text" name="searchForum" placeholder="Procurar Forum">
+        </form>
+        <div>
+            <ol class="ol-foruns">
+                <li>
+                    <a class="link-other-forum" href="#">Inovacao Cabo Delgado</a>
+                </li>
+                <li>
+                    <a class="link-other-forum" href="#"> Fera Internacional TIC's</a>
+                </li>
+                <li>
+                    <a class="link-other-forum" href="#"> Direccao Provincial de Tecnologia</a>        
+                </li>
+                <li>
+                    <a class="link-other-forum" href="#"> Engenharia Informatica</a>
+                </li>
+                <li>
+                    <a class="link-other-forum" href="#"> Auditoria Informatica</a>
+                </li>
+                <li>
+                    <a class="link-other-forum" href="#"> Avancos Tecnologicos</a>
+                </li>
+            </ol>
+            
+        </div>
+    </aside>
+    <br>
+    <br>
+    <article class="forum-content">
+        
+        <h1>FORUM - Comunidade de Programadores</h1>
+        <br>
+        <br>
+        <ul class="ul-uniquie">
+            <li>
+                <a href="#" class="link-add" title="Forum" id="novoforum"> + Novo Forum</a>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <div class="forum">
+            <a class="title-forum" href="/openForum" title="Ver Mais"> Oportunidades de Programadores </a>
+            <p class="text-forum">
+                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
+                 do cliente para interagir com o servidor. Crie um novo controller em
+            </p>
+            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
+        </div>
+        <br>
+        <br>
+        <div class="forum">
+            <a class="title-forum" href="/openForum" title="Ver Mais"> Barreiras Nas Tecnologias </a>
+            <p class="text-forum">
+                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
+                 do cliente para interagir com o servidor. Crie um novo controller em
+            </p>
+            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
+        </div>
+        <br>
+        <br>
+        <div class="forum">
+            <a class="title-forum" href="/openForum" title="Ver Mais"> Tecnologias de Informacao Em Mocambique </a>
+            <p class="text-forum">
+                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
+                 do cliente para interagir com o servidor. Crie um novo controller em
+            </p>
+            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
+        </div>
+        <br>
+        <br>
+        <div class="forum">
+            <a class="title-forum" href="/openForum" title="Ver Mais"> Novas Tecnologias </a>
+            <p class="text-forum">
+                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
+                 do cliente para interagir com o servidor. Crie um novo controller em
+            </p>
+            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
+        </div>
+    </article>
+<script>
+    var tag = document.getElementById("novoforum");
+    tag.addEventListener('click', function(){
+        var modal = document.getElementById("modal");
+        modal.style.display = "block";
+        document.getElementById('body').style.overflow = "hidden"; 
+    });
+    
+    tag = document.getElementById("div-close-modal");
+    tag.addEventListener('click', function(){
+        modal.style.display = "none";
+        document.getElementById('body').style.overflow = "scroll";
+    });
+    tag = document.getElementById("reset");
+    tag.addEventListener('click', function(){
+        modal.style.display = "none";
+        document.getElementById('body').style.overflow = "scroll";
+    });
+    tag = document.getElementById("submit");
+    tag.addEventListener('click', function(){
+        modal.style.display = "none";
+        document.getElementById('form').submit();
+    });
+</script>
+<% include ../footer %>

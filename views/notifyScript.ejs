@@ -1,0 +1,8 @@
+<script src="/sockect.io/socket.io.js"> </script>
+<script>
+    var sockect = io.connect('http://localhost:3000');
+    socket.on('new-message', function(data){
+        var chat = document.getElementById("chat_" + data.email);
+        chat.href += '?' + data.sala;
+    });
+</script>

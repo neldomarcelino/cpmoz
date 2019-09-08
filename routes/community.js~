@@ -1,0 +1,15 @@
+var express = require('express');
+var router = express.Router();
+
+module.exports = function(app) {
+
+	var community = app.controllers.community;
+	app.get('/community', community.index);
+	app.get('/community/:id', community.show);
+	app.post('/community', community.create);
+	app.get('/community', community.edit);
+	app.put('/community', community.update);
+	app.del('/community', community.destroy);
+	
+	
+};

@@ -1,0 +1,27 @@
+
+module.exports = function(app) {
+	
+	var communityController = {
+		index: function(req, res, next) {
+			
+			var programmer = req.session.programmer;
+			var programmers = programmer.tickets;	
+			var params = {programmer: programmer, programmers: programmers};		
+			res.render('community/index', params);
+		}/*,
+		create: function(req, res){
+			var programmer = req.session.programmer;
+		},
+		show: function(req, res){
+		
+		},
+		edit: function(req, res){
+		
+		},
+		destroy: function(req, res){
+			
+		}*/
+	};
+	return communityController;
+
+}

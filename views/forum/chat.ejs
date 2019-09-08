@@ -1,0 +1,46 @@
+<% include ../header %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000');
+        socket.on('send-client', function (message) {
+            document.getElementById('chat').innerHTML += message;
+        });
+        var enviar = function() {
+            var message = document.getElementById('message');
+            socket.emit('send-server', message.value);
+        };
+    </script>
+    <style>
+        .div-chat-forum{
+            position: relative;
+            top: 60px;
+            margin: 0 auto;
+            width: 960px;
+            box-shadow: 0 0 2px #cccccc; 
+            padding: 12px;
+            border-radius: 10px;
+        }
+    </style>
+
+<br>
+<br>
+<article class="div-chat-forum">
+    
+    <header>
+        <h2>CpMOZ - Forum</h2>
+    </header>
+    <div>
+        <a class="title-forum" href="/openForum" title="Ver Mais"> Oportunidades de Programadores </a>
+        <p class="text-forum">
+            Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
+                do cliente para interagir com o servidor. Crie um novo controller em
+        </p>
+        <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Data: 2019</a>|<a>Autor: CPMOZ</a>
+    </div>
+    <section>
+        <pre id="chat"></pre>
+        <input type="text" id="message" placeholder="Mensagem">
+        <button onclick="enviar();">Enviar</button>
+    </section>    
+</article>
+<% include ../footer %>

@@ -1,0 +1,27 @@
+module.exports = function(app){
+	var userController = {
+		login: function(req, res){
+			res.render('user/login');
+		},
+		travel: function(req, res){
+			var programmer = req.body.ticket;
+			console.log(programmer);
+			
+			if(programmer){
+				var programmers = req.body;
+				programmers['tickets'] = [];
+				req.session.programmer = ticket;
+				res.redirect('/community', ); 
+			}else{
+				res.redirect('/');
+			}
+		}
+		,
+		logout: function(req, res){
+			req.session.destroy();
+			res.redirect('/');
+		}
+	
+	};
+	return userController;
+}
