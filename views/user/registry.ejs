@@ -1,0 +1,54 @@
+<% include ../header %>
+<div class="limiter">
+	
+	<div class="container-login100">
+        <div class="wrap-login100">
+        <div class="login100-form-title">
+					<span class="login100-form-title-1">
+						cpMOZ - Registro
+					</span>
+					<span>Comunidade de Programadores de Mocambique</spam>
+         </div>
+		<form action="/registry" method="post" class="login100-form">
+		
+        <div class="wrap-input100 m-b-26">
+         	<span class="label-input100">Email</span>
+            <input id="email" class="input100" type="email" name="email" placeholder="Enter Email">
+            <span class="focus-input100"></span>
+         </div>
+         <div class="wrap-input100 m-b-26">
+            <span class="label-input100">Name</span>
+           <input id="email" class="input100" type="text" name="name" placeholder="Enter Name">
+           <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 m-b-26">
+            <span class="label-input100">Contact</span>
+           <input id="email" class="input100" type="number" name="contact" placeholder="Enter Your Contact">
+           <span class="focus-input100"></span>
+        </div>
+         <div class="wrap-input100 m-b-26">
+         	<span class="label-input100">Password</span>
+            <input id="password" class="input100" type="password" name="password" placeholder="Enter Password">
+            <span class="focus-input100"></span>
+         </div>
+         
+          <div class="flex-sb-m w-full p-b-30">
+          	<div class="contact100-form-checkbox">
+            	<a href="/" class="txt1">Cancelar</a>
+            </div>
+
+            <div>
+            	<a id="recovery_email" href="/login" class="txt1"> Login </a>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn">
+          	<input type="submit" id="button_1" class="login-button" value="Confirmar">
+          </div>
+         
+		</form>
+	</div>	
+	</div>			
+</div>	
+
+<% include ../footer%>

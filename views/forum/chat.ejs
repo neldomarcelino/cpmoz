@@ -1,46 +1,111 @@
-<% include ../header %>
+<% include /../header %>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io.connect('http://localhost:3000');
+
+        socket.emit('chat', '<%- id %>');
         socket.on('send-client', function (message) {
-            document.getElementById('chat').innerHTML += message;
+            var div = document.getElementById('chat');
+            div.innerHTML += 
+                " <section class='section'> "
+                    + message + 
+                " </section> ";
         });
+        
         var enviar = function() {
             var message = document.getElementById('message');
             socket.emit('send-server', message.value);
         };
+        
     </script>
     <style>
         .div-chat-forum{
-            position: relative;
-            top: 60px;
             margin: 0 auto;
+            margin-top: 60px;
             width: 960px;
-            box-shadow: 0 0 2px #cccccc; 
+            box-shadow: 0 0 1px #cccccc; 
             padding: 12px;
             border-radius: 10px;
+            border-left: 1px dotted #c8ccd0;
+            border-right: 1px dotted #c8ccd0;
+        }
+        .message{
+            padding: 10px;
+            height: 200px;
+            width: 97.5%;
+            
+        }
+        .textarea{
+            text-align: left;
+            resize: none;
+            font-weight: 400;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: inherit;
+            padding: .6em .7em;
+            border: 1px solid #bbc0c4;
+            border-radius: 3px;
+        }
+        .div-textarea-message{
+            width: 100%;
+            vertical-align: baseline;
+        }
+        .title{
+            text-decoration: none;
+        }
+        .publicar{
+            min-width: 120px;
+            height: 45px;
+            background-color: rgb(61, 61, 255);
+            color: #fff;
+            border: 0;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+        .publicar:hover{
+            cursor: pointer;
+        }
+        .section{
+            margin: 10px 0 5px 0;
+            word-wrap: break-word;
+            font-size: 18px;
+            line-height: 1.3;
+            padding: 0 0 0 10px;
+            border-top: 1px dotted #c8ccd0;
+            border-bottom: 1px dotted #c8ccd0;
+            clear: both;
+            width: 100%; 
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #fff;
+        }
+        .span{
+            font-size: 12px;
+            font-weight: 200;
         }
     </style>
 
 <br>
 <br>
-<article class="div-chat-forum">
+<article class="div-chat-forum article">
     
-    <header>
-        <h2>CpMOZ - Forum</h2>
-    </header>
     <div>
-        <a class="title-forum" href="/openForum" title="Ver Mais"> Oportunidades de Programadores </a>
+        <a class="title-forum title" title="Ver Mais"> <%- forun.title %> </a>
         <p class="text-forum">
-            Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
-                do cliente para interagir com o servidor. Crie um novo controller em
+            <%- forun.introdution %>
         </p>
-        <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Data: 2019</a>|<a>Autor: CPMOZ</a>
+        <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Data: <%- forun.data %></a>|<a>Autor: <%- forun.autor %></a>
+        <hr>
     </div>
-    <section>
-        <pre id="chat"></pre>
-        <input type="text" id="message" placeholder="Mensagem">
-        <button onclick="enviar();">Enviar</button>
-    </section>    
+    <br>
+    <h4>Respostas</h4>
+    <div id="chat">
+    </div>
+    <br><hr><br>
+    <div class="div-textarea-message">
+        <label>Sua Resposta</label>
+        <textarea class="message textarea" id="message" name="message" data-min-length="" cols="92" rows="15" tabindex="101" data-wz-state="256"></textarea>
+        <button class="publicar" onclick="enviar();">Publicar</button> 
+    </div>    
+          
 </article>
 <% include ../footer %>

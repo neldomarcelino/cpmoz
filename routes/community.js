@@ -10,6 +10,6 @@ module.exports = function(app) {
 	app.get('/community/:id',autentice, community.show);
 	app.post('/community',autentice, community.create);
 	app.get('/community/:id',autentice, community.edit);
-	app.del('/community',autentice, community.destroy);
+	app.delete('/community',autentice, community.destroy);
 	
 };

@@ -5,6 +5,8 @@ module.exports = function(app){
 	var user = app.controllers.user;
 	
 	app.get('/login', user.login);
-	app.post('/travel', user.travel);
+	app.post('/autentice', user.autentice);
+	app.post('/registry', user.registry);
+	app.get('/registry', user.getRegistry);
 	app.get('/logout', user.logout);
 };

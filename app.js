@@ -1,36 +1,55 @@
+const KEY = "cpmoz.forum";
+const SECRET = "cpmoz";
+const days = 360000 * 24 * 7;
+const dburl = "mongodb://localhost/cpmoz"
+
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var load = require('express-load');
 var session = require('express-session');
 var error = require('./middleware/error');
-var app = express();
+
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-var KEY = "cpmoz.forum";
-var SECRET = "cpmoz";
+var mongoose = require('mongoose');
+var connection = mongoose.connection;
+
 var cookie = cookieParser(SECRET);
 var store = new session.MemoryStore();
 var sessionOptions = {
     secure: false, secret: SECRET, key: KEY, 
-    store: store, resave: false, saveUninitialized: true
+    store: store, resave: false, saveUninitialized: true,
+    cookie:{ maxAge: days}
 };
-session = session(sessionOptions);
-	
+var sessions = session(sessionOptions);
+
+
+mongoose.connect(dburl, {useNewUrlParser: true});
+connection.on('error', console.error.bind(console, 'connection error:'))
+connection.once('open', function(){
+    console.log("Connect with database");
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('database', mongoose);
+
 
 app.use(favicon());
 app.use(logger('dev'));
 app.use(cookie);
-app.use(session);
+app.use(sessions);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.set('authorization', function(data, accept) {
@@ -42,7 +61,7 @@ io.set('authorization', function(data, accept) {
             } else {
                 data.session = session;
                 accept(null, true);
-                console.log(data.session.user.nome);
+                //console.log(data.session.user.nome);
             }
         });
     });

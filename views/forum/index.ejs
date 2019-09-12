@@ -1,5 +1,11 @@
 <% include ../header %>
-
+<script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('new-message', function(data) {
+        var chat = document.getElementById('chat_5d793acceb94161234e152ab');
+        chat.href += '?' + '5d793acceb94161234e152ab';
+    });
+</script>
 
 <div id="modal" class="window-modal-style">
     <div id="div-close-modal"></div>
@@ -21,13 +27,12 @@
             
             <div class="wrap-input100 m-b-26">
                 <span class="label">Titulo</span>
-                <input id="email" class="input100" type="text" name="nome" placeholder="Titulo do Forum">
+                <input id="title" class="input100" type="text" name="title" placeholder="Titulo do Forum">
                 <span class="focus-input100"></span>
             </div>
             <div >
                 <span class="label"> Introducao</span>
-                <textarea id="email" class="textarea" type="text" name="nome" placeholder="Passagem">
-                </textarea>
+                <textarea id="introdution" class="textarea" type="text" name="introdution"></textarea>
             </div>
         </form>		
     </div>
@@ -73,6 +78,7 @@
         <h1>FORUM - Comunidade de Programadores</h1>
         <br>
         <br>
+        <% if (session){ %>
         <ul class="ul-uniquie">
             <li>
                 <a href="#" class="link-add" title="Forum" id="novoforum"> + Novo Forum</a>
@@ -80,44 +86,20 @@
         </ul>
         <br>
         <br>
-        <div class="forum">
-            <a class="title-forum" href="/openForum" title="Ver Mais"> Oportunidades de Programadores </a>
-            <p class="text-forum">
-                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
-                 do cliente para interagir com o servidor. Crie um novo controller em
-            </p>
-            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
-        </div>
-        <br>
-        <br>
-        <div class="forum">
-            <a class="title-forum" href="/openForum" title="Ver Mais"> Barreiras Nas Tecnologias </a>
-            <p class="text-forum">
-                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
-                 do cliente para interagir com o servidor. Crie um novo controller em
-            </p>
-            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
-        </div>
-        <br>
-        <br>
-        <div class="forum">
-            <a class="title-forum" href="/openForum" title="Ver Mais"> Tecnologias de Informacao Em Mocambique </a>
-            <p class="text-forum">
-                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
-                 do cliente para interagir com o servidor. Crie um novo controller em
-            </p>
-            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
-        </div>
-        <br>
-        <br>
-        <div class="forum">
-            <a class="title-forum" href="/openForum" title="Ver Mais"> Novas Tecnologias </a>
-            <p class="text-forum">
-                Vamos implementar o layout do nosso chat e principalmente os eventos de comunicação
-                 do cliente para interagir com o servidor. Crie um novo controller em
-            </p>
-            <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a>Autor: CPMOZ</a>
-        </div>
+        <% } %>
+        <% foruns.forEach(function(forum){ %>
+            
+            <div class="forum">
+                <a id="chat_<%- forum._id %>" class="title-forum" href="/openForum/<%- forum._id %>" title="Ver Mais"> <%- forum.title %> </a>
+                <p class="text-forum">
+                    <%- forum.introdution %>     
+                </p>
+                <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a> <%- forum.autor %> </a>
+            </div>
+            <br>
+            <br>
+        <% }) %>
+        
     </article>
 <script>
     var tag = document.getElementById("novoforum");

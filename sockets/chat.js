@@ -2,36 +2,36 @@ module.exports = function(io){
     var sockets = io.sockets;
     var crypto = require('crypto');
     var md5 = crypto.createHash('md5');
-
+    var redis = require('redis').createClient();
+    
     sockets.on('connection', function(client){
-        var session = client.handshake.session;
-        //var user = session.user;
-        console.log(session);
+        var session = client.request.session;
+        var user = session.user;
+        var chat = client.handshake.headers.referer.split('/')[
+            client.handshake.headers.referer.split('/').length-1
+        ];
+        
+        client.on('chat', function(chat){
+            client.join(chat);
+            var userInChat = user.name;
+            redis.lrange(chat, 0, -1, function(err, messages){
+                messages.forEach(function(msg){
+                    sockets.in(chat).emit('send-client', msg);
+                });
+            });
+        });
         client.on('send-server', function(message){
+          
+            message = "<p> <span class='span'> Publicado por:" + user.name + " </span> <br><br>" + message + "</p>";
             
-            /*client.get('sala', function(err, sala){
-                var data = {sala: sala};
-                client.broadcast.emit('new-message', data);
-                sockets.in(sala).emit('send-client', message);
-            });*/
-            message = "<b>" + "dd" + ": </b>" + message + "<br>";
+            redis.lpush(chat, message);
+            
             client.emit("send-client", message);
-            client.broadcast.emit('send-client', message);
+            client.in(chat).emit('send-client', message);   
         });
-        client.on('join', function(sala){
-            if(sala){
-                sala = sala.replace('?', '');
-            }else{
-                var timestamp = new Date().toString();
-                sala = md5.update(timestamp).digest('hex');
-            }
-            client.set('sala', sala);
-            client.join(sala);
-        });
-        client.on('disconnect', function(){
-            /*client.get('sala', function(err, sala){
-                client.leave(sala);
-            });*/
+        
+        client.on('disconnect', function () {
+            client.leave(chat);
         });
     });
 }

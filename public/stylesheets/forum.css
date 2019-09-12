@@ -29,6 +29,8 @@
     font-size:	16px;
     font-stretch: expanded; 
     text-align: justify;
+    text-justify: auto;
+    word-wrap: break-word;
 }
 .title-forum{
     color: darkslategrey;
@@ -105,7 +107,15 @@ li{
 .textarea{
     width: 890px;
     height: 270px;
+    text-align: left;
     resize: none;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: inherit;
+    padding: .6em .7em;
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
 }
 .addNewForumButtom{
     position: relative;
