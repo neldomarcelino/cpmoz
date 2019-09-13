@@ -11,14 +11,21 @@ module.exports = function(io){
             client.handshake.headers.referer.split('/').length-1
         ];
         
-        client.on('chat', function(chat){
-            client.join(chat);
-            var userInChat = user.name;
-            redis.lrange(chat, 0, -1, function(err, messages){
+        client.on('chat', function(idChat){
+            var idUser = user._id;
+            client.join(idChat);
+            client.join(idUser)
+
+            redis.lrange(idChat, 0, -1, function(err, messages){
                 messages.forEach(function(msg){
-                    sockets.in(chat).emit('send-client', msg);
+                    sockets.in(idUser).emit('send-client', msg);
                 });
             });
+        });
+        
+        // Envia o chat anterior somente para um cliente.
+        client.on('userOnly', function(userId){
+            
         });
         client.on('send-server', function(message){
           

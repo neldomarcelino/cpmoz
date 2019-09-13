@@ -32,7 +32,7 @@ var sessionOptions = {
 var sessions = session(sessionOptions);
 
 
-mongoose.connect(dburl, {useNewUrlParser: true});
+mongoose.connect(dburl, {useNewUrlParser: true,  useUnifiedTopology: true});
 connection.on('error', console.error.bind(console, 'connection error:'))
 connection.once('open', function(){
     console.log("Connect with database");

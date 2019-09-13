@@ -4,7 +4,33 @@ module.exports = function(app){
     var forumController = {
         index: function(req, res){
             
-            var query = {}
+            var query = {};
+
+            forum.find(query)
+                .sort({'data':-1})
+                .exec(function(err, foruns){
+                    if(err){
+                        console.log("error occur");
+                        res.redirect('/');
+                    }else{
+                        var session = false;
+                        if(req.session.user!=undefined){
+                            session = true; 
+                        }
+                        var newForuns = [];
+                        var olderForuns = []
+                        for(i = 0; i < foruns.length; i++){
+                            if(i<10){
+                                newForuns[i] = foruns[i];
+                            }else{
+                                olderForuns[i] = foruns[i]; 
+                            }
+                             
+                        }
+                        var result = {newForuns: newForuns, olderForuns: olderForuns, session:session};
+                        res.render('forum/index', result);
+                    }  
+                });/*
             forum.find(query, function(err, foruns){
                 if(err){
                     console.log("error occur");
@@ -17,7 +43,7 @@ module.exports = function(app){
                     var result = {foruns: foruns, session:session};
                     res.render('forum/index', result);
                 }    
-            });
+            });*/
             
         },
         create: function(req, res){
@@ -40,7 +66,7 @@ module.exports = function(app){
         },
         openForum: function(req, res){
             var _id = req.params.id;
-
+            var userId = req.session.user.id;
             var query ={
                 _id: _id
             };
@@ -48,7 +74,7 @@ module.exports = function(app){
                 if(err){
                     console.log("Error Occur");
                 }else{
-                    var data = {forun: result, id: _id};
+                    var data = {forun: result, id: _id, userId: userId};
                     res.render('forum/chat', data);
                 }
             });

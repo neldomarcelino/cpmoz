@@ -49,24 +49,12 @@
         </form>
         <div>
             <ol class="ol-foruns">
-                <li>
-                    <a class="link-other-forum" href="#">Inovacao Cabo Delgado</a>
-                </li>
-                <li>
-                    <a class="link-other-forum" href="#"> Fera Internacional TIC's</a>
-                </li>
-                <li>
-                    <a class="link-other-forum" href="#"> Direccao Provincial de Tecnologia</a>        
-                </li>
-                <li>
-                    <a class="link-other-forum" href="#"> Engenharia Informatica</a>
-                </li>
-                <li>
-                    <a class="link-other-forum" href="#"> Auditoria Informatica</a>
-                </li>
-                <li>
-                    <a class="link-other-forum" href="#"> Avancos Tecnologicos</a>
-                </li>
+                <% olderForuns.forEach(function(forum){ %>
+                    <li>
+                        <a class="link-other-forum" href="/openForum/<%- forum._id %>"> <%- forum.title %> </a>
+                    </li>
+                <% }) %>
+                
             </ol>
             
         </div>
@@ -87,7 +75,7 @@
         <br>
         <br>
         <% } %>
-        <% foruns.forEach(function(forum){ %>
+        <% newForuns.forEach(function(forum){ %>
             
             <div class="forum">
                 <a id="chat_<%- forum._id %>" class="title-forum" href="/openForum/<%- forum._id %>" title="Ver Mais"> <%- forum.title %> </a>
