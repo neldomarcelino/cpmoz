@@ -65,7 +65,7 @@ module.exports = function(app){
                     res.render('forum/chat', data);
                 }
             });
-        },
+        }/*,
         searchForum: function(req, res){
             var title = req.body.search;
 
@@ -75,7 +75,7 @@ module.exports = function(app){
             forun.find(query, function(){
 
             })
-        }
+        }*/
 
     };
     return forumController;
