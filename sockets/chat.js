@@ -1,6 +1,7 @@
 module.exports = function(io){
     var sockets = io.sockets;
     var crypto = require('crypto');
+    var url = require('url');
     var md5 = crypto.createHash('md5');
 
     //REDIS_URL to connect on local machine
