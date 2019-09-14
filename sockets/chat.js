@@ -4,7 +4,13 @@ module.exports = function(io){
     var md5 = crypto.createHash('md5');
 
     //REDIS_URL to connect on local machine
-    var redis = require('redis').createClient(process.env.REDISCLOUD_URL);
+    //var redis = require('redis').createClient(process.env.REDIS_URL);
+    
+    //REDIS_URL to connect on heroku
+    var redisURL = url.parse(process.env.REDISCLOUD_URL);
+    var redis = require('redis').createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+
+    
     
     sockets.on('connection', function(client){
         var session = client.request.session;

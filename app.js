@@ -100,6 +100,6 @@ if (app.get('env') === 'development') {
 
 
 
-server.listen(3000, function(){
+server.listen(process.env.PORT || 3000, function(){
 	//console.log("comunidade de programadores de Mocambique");
 });
