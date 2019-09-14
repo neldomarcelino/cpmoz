@@ -34,9 +34,8 @@ var sessions = session(sessionOptions);
 
 
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true,  useUnifiedTopology: true});
-connection.on('error', console.error.bind(console, 'connection error:'))
 connection.once('open', function(){
-    console.log("Connect with database");
+    //console.log("Connect with database");
 });
 
 // view engine setup
@@ -102,5 +101,5 @@ if (app.get('env') === 'development') {
 
 
 server.listen(3000, function(){
-	console.log("comunidade de programadores de Mocambique");
+	//console.log("comunidade de programadores de Mocambique");
 });

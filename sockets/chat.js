@@ -2,7 +2,9 @@ module.exports = function(io){
     var sockets = io.sockets;
     var crypto = require('crypto');
     var md5 = crypto.createHash('md5');
-    var redis = require('redis').createClient(process.env.REDIS_URL);
+
+    //REDIS_URL to connect on local machine
+    var redis = require('redis').createClient(process.env.REDISCLOUD_URL);
     
     sockets.on('connection', function(client){
         var session = client.request.session;
