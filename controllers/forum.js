@@ -30,20 +30,7 @@ module.exports = function(app){
                         var result = {newForuns: newForuns, olderForuns: olderForuns, session:session};
                         res.render('forum/index', result);
                     }  
-                });/*
-            forum.find(query, function(err, foruns){
-                if(err){
-                    console.log("error occur");
-                    res.redirect('/');
-                }else{
-                    var session = false;
-                    if(req.session.user!=undefined){
-                        session = true; 
-                    }
-                    var result = {foruns: foruns, session:session};
-                    res.render('forum/index', result);
-                }    
-            });*/
+                });
             
         },
         create: function(req, res){
@@ -78,6 +65,16 @@ module.exports = function(app){
                     res.render('forum/chat', data);
                 }
             });
+        },
+        searchForum: function(req, res){
+            var title = req.body.search;
+
+            var query = {
+                title: title
+            }
+            forun.find(query, function(){
+
+            })
         }
 
     };

@@ -1,11 +1,5 @@
 <% include ../header %>
-<script>
-    var socket = io.connect('http://localhost:3000');
-    socket.on('new-message', function(data) {
-        var chat = document.getElementById('chat_5d793acceb94161234e152ab');
-        chat.href += '?' + '5d793acceb94161234e152ab';
-    });
-</script>
+
 
 <div id="modal" class="window-modal-style">
     <div id="div-close-modal"></div>
@@ -43,10 +37,7 @@
     <aside class="other-forum">
         <br>
         <h5 class="title-other-forum-h3">Outros FoRum</h5>
-        
-        <form class="form-forum-search" action="/searchForum" method="POST">
-            <input class="search-forum-input" type="text" name="searchForum" placeholder="Procurar Forum">
-        </form>
+            <input id="search" class="search-forum-input form-forum-search" type="text" name="search" placeholder="Procurar Forum">
         <div>
             <ol class="ol-foruns">
                 <% olderForuns.forEach(function(forum){ %>
@@ -66,7 +57,6 @@
         <h1>FORUM - Comunidade de Programadores</h1>
         <br>
         <br>
-        <% if (session){ %>
         <ul class="ul-uniquie">
             <li>
                 <a href="#" class="link-add" title="Forum" id="novoforum"> + Novo Forum</a>
@@ -74,7 +64,6 @@
         </ul>
         <br>
         <br>
-        <% } %>
         <% newForuns.forEach(function(forum){ %>
             
             <div class="forum">
@@ -112,5 +101,20 @@
         modal.style.display = "none";
         document.getElementById('form').submit();
     });
+</script>
+
+<script>
+    
+    var search = document.getElementById("search");
+    search.addEventListener('keyup', function(event){
+        var href = window.location.pathname + "?" + search.nodeValue;
+        //window.location.host += href;
+        alert(href);
+        if(event.keyCode === 13){
+            //search.click();
+        }
+    });
+
+    
 </script>
 <% include ../footer %>
