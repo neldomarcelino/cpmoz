@@ -26,9 +26,14 @@ module.exports = function(io){
             client.join(idUser)
 
             redis.lrange(idChat, 0, -1, function(err, messages){
-                messages.forEach(function(msg){
-                    sockets.in(idUser).emit('send-client', msg);
-                });
+                if(err || messages == undefined){
+
+                }else{
+                    messages.forEach(function(msg){
+                        sockets.in(idUser).emit('send-client', msg);
+                    });
+                }
+                
             });
         });
         
