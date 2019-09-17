@@ -24,10 +24,9 @@
                 <input id="title" class="input100" type="text" name="title" placeholder="Titulo do Forum">
                 <span class="focus-input100"></span>
             </div>
-            <div >
                 <span class="label"> Introducao</span>
                 <textarea id="introdution" class="textarea" type="text" name="introdution"></textarea>
-            </div>
+            
         </form>		
     </div>
 </div>
@@ -36,8 +35,10 @@
     <br>
     <aside class="other-forum">
         <br>
-        <h5 class="title-other-forum-h3">Outros FoRum</h5>
-            <input id="search" class="search-forum-input form-forum-search" type="text" name="search" placeholder="Procurar Forum">
+        <div class="dl0">
+            <h5 class="title-other-forum-h3">Outros FoRum</h5>
+            <input class="search-forum-input" type="text" name="search" placeholder="Procurar Forum">
+        </div>
         <div>
             <ol class="ol-foruns">
                 <% olderForuns.forEach(function(forum){ %>
@@ -51,15 +52,13 @@
         </div>
     </aside>
     <br>
-    <br>
     <article class="forum-content">
         
         <h1>FORUM - Comunidade de Programadores</h1>
         <br>
-        <br>
         <ul class="ul-uniquie">
             <li>
-                <a href="#" class="link-add" title="Forum" id="novoforum"> + Novo Forum</a>
+                <button class="link-add" title="Forum" id="novoforum"> + Novo Forum</button>
             </li>
         </ul>
         <br>
@@ -71,7 +70,7 @@
                 <p class="text-forum">
                     <%- forum.introdution %>     
                 </p>
-                <a href="#">Avaliar</a>|<a href="#">Visulizacoes</a>|<a> <%- forum.autor %> </a>
+                <a href="#">Avaliar </a> | <a href="#"> Visulizacoes </a> |<a> <%- forum.autor %> </a>
             </div>
             <br>
             <br>

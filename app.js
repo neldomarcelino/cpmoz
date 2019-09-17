@@ -1,7 +1,7 @@
 const KEY = "cpmoz.forum";
 const SECRET = "cpmoz";
 const days = 360000 * 24 * 7;
-//const dbUrlLocal = "mongodb://localhost/cpmoz"
+const dbUrlLocal = "mongodb://localhost/cpmoz"
 var dbUrlOnline = "mongodb://heroku_7tzkz3jm:ds159641@ds159641.mlab.com:59641/heroku_7tzkz3jm"
 
 var express = require('express');
@@ -33,9 +33,9 @@ var sessionOptions = {
 var sessions = session(sessionOptions);
 
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true,  useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || dbUrlLocal, {useNewUrlParser: true,  useUnifiedTopology: true});
 connection.once('open', function(){
-    //console.log("Connect with database");
+    console.log("Connect with database");
 });
 
 // view engine setup
@@ -61,7 +61,6 @@ io.set('authorization', function(data, accept) {
             } else {
                 data.session = session;
                 accept(null, true);
-                //console.log(data.session.user.nome);
             }
         });
     });
@@ -98,8 +97,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-
-
 server.listen(process.env.PORT || 3000, function(){
-	//console.log("comunidade de programadores de Mocambique");
+	console.log("comunidade de programadores de Mocambique");
 });

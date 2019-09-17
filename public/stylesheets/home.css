@@ -2,12 +2,16 @@
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'ecoicons';
-	src: url("../fonts/ecoicons/ecoicons.eot");
-	src: url("../fonts/ecoicons/ecoicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ecoicons/ecoicons.woff") format("woff"), url("../fonts/ecoicons/ecoicons.ttf") format("truetype"), url("../fonts/ecoicons/ecoicons.svg#ecoicons") format("svg");
+	/*src: url("/fonts/codropsicons/codropsicons.eot");
+	src: url("/fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("/fonts/codropsicons/codropsicons.woff") format("woff"), url("/fonts/codropsicons/codropsicons.ttf") format("truetype"), url("/fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+	*/
+	src: url("/fonts/ecoicons/ecoicons.eot");
+	src: url("/fonts/ecoicons/ecoicons.eot?#iefix") format("embedded-opentype"), url("/fonts/ecoicons/ecoicons.woff") format("woff"), url("/fonts/ecoicons/ecoicons.ttf") format("truetype"), url("/fonts/ecoicons/ecoicons.svg#ecoicons") format("svg");
 }
 
 .form-forum-search::after{
-	content: "\e005"
+	font-family: 'ecoicons';
+	content: "/e005";
 }
 body{
 	margin: 0;
@@ -44,7 +48,7 @@ body{
 .content{
 	margin: 0 auto;
 	margin-top: 10%;
-	width: 960px;
+	width: 95%;
 	text-align: center;
 }
 .link-title{
@@ -57,7 +61,6 @@ body{
 	color: darkslategray;
 }
 .img-home{
-	width: 100%;
 	height: 350px;
 }
 .ul1{
@@ -81,4 +84,187 @@ body{
 	width: 70%;
 	align-content: flex-start;
 	justify-content: center;
+}
+.button{
+	color: black;
+}
+.ul-responsivo{
+	display: none;
+}
+.ul-responsivo-title{
+	display: none;
+}
+.divMenuResponsive{
+	width: 94%;
+	display: none;
+	
+}
+
+/* Design Responsivo */
+
+@media (max-width: 800px) {
+    
+	.ul1{
+		float: none;
+	}
+	.ul2{
+		float: none;
+	}
+	.ul{
+		text-justify: auto;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 20px;
+		display: block;
+		
+	}
+	.ul li{
+		list-style-type: square;
+		padding: 8px;
+	}
+	.uls{
+		margin: 0 auto;
+		width: 70%;
+		align-content: flex-start;
+		justify-content: center;
+	}
+	.nav-menu{
+	
+		background-color: darkslategray;
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		top: 0;
+	}
+}
+@media (max-width: 746px){
+	.nav-menu{
+	
+		background-color: darkslategray;
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		height: 80px;
+		top: 0;
+	}
+	.ul-menu{
+		text-align: center;
+		margin: 0;
+		padding: 0;
+		color: #5f6f81;
+		list-style: none;
+		text-transform: none;
+		font-weight: 320;
+		font-family: 'Lato', Arial, sans-serif;
+		line-height: 70px;
+	}
+	.ul-menu li{
+		display: none;
+		padding: 20px;
+		
+	}
+	.button{
+		color: #000;
+		height: 60px;
+		width: 80px;
+		cursor: pointer;
+		background-image: url('/images/menu.png');
+		background-repeat: no-repeat;  
+	}
+	.ul-responsivo{
+		display: block;
+		position: absolute;
+		right: 3%;
+	}
+	.ul-responsivo-title{
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 12%;
+	}
+	.li-title{
+		height: 50px;
+		margin-top: 10px;
+	}
+	.link-title{
+		text-decoration: none;
+		font-size: 18px;
+		font-weight: 700;
+		
+	}
+	.divres{
+		width: 100%; /* Full width */
+    	height: 100%; /* Full height */
+		position: fixed;
+		z-index: 1;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		background-color: #727272b7;
+		
+	}
+	.divres li{
+		padding-bottom: 8%;
+	}
+	.link-menu{
+		color: #ffffffb9;
+		cursor: pointer;
+		font-weight: 700;
+		text-decoration: none;
+	}
+	.divMenuAux{
+		width: 77%; /* Full width */
+    	height: 100%; /* Full height */
+		position: fixed;
+		z-index: 1;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		background-color: #fff;
+		-webkit-transform: translateX(0px);
+		-moz-transform: translateX(0px);
+		transform: translateX(0px);
+		transition-duration: 4s;
+	}
+	.theUlRes li a{
+		color: darkslategray;
+		text-decoration: none;
+		font-family: 'ecoicons';
+	}
+	.theUlRes li a:hover{
+		font-weight: 500;
+		color: rgb(0, 89, 255);
+		text-decoration: underline;
+	}
+	#forum::before{
+		font-family: 'ecoicons';
+		content: "\e003"
+	}
+	#about::before{
+		font-family: 'ecoicons';
+		content: "\e000"
+	}
+	#programmer::before{
+		font-family: 'ecoicons';
+		content: "\e008"
+	}
+	#login::before{
+		font-family: 'ecoicons';
+		content: "\e001"
+	}
+	#contact::before{
+		font-family: 'ecoicons';
+		content: "\e004"
+	}
+}
+@media (max-width: 640px){
+	.img-home{
+		width: 100%;
+		height: 280px;
+	}	
+	.uls{
+		margin: 0 auto;
+		width: 100%;
+		align-content: flex-start;
+		justify-content: center;
+	}
 }

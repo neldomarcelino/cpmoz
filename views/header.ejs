@@ -18,7 +18,7 @@
 	<nav class="nav-menu">
 		<ul class="ul-menu">
 			<li>
-					<a class="link-menu link-title" href="/"> CPMOZ </a>
+				<a class="link-menu link-title" href="/"> CPMOZ </a>
 			</li>
 			<li class="li-menu">
 				<a class="link-menu" href="/foruns"> Forum </a>
@@ -32,9 +32,62 @@
 			</li>
 			<li class="li-menu">
 				<a class="link-menu" href="/contact"> Contacte-nos </a>
-		</li>
+			</li>
 			<li class="li-menu">
 				<a class="link-menu" href="/about"> Sobre </a>
 			</li>
-		</ul>	
+			
+		</ul>
+		<ul class="ul-responsivo-title">
+			<li class="li-title">
+				<a class="link-menu link-title" href="/"> CPMOZ </a>
+			</li>
+		</ul>
+		<ul class="ul-responsivo">
+			<li>
+				<a id="button" ><img class="button" src="/images/menu2.png"></a>
+			</li>
+		</ul>
+
 	</nav>
+	<div id="divMenuResponsive" class="divMenuResponsive">
+		<div class="divMenuAux">
+			<ul class="theUlRes">
+				
+				<li id="forum">
+					<a href="/foruns"> Forum </a>
+				</li>
+				<li id="programmer">
+					<a href="/programmers"> Programadores </a>
+				</li>
+
+				<li id="login">
+						<a href="/login"> Entrar </a>
+				</li>
+				<li id="contact">
+					<a  href="/contact"> Contacte-nos </a>
+				</li>
+				<li id="about">
+					<a  href="/about"> Sobre </a>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	<script>
+		var button = document.getElementById("button");
+		var check = false;
+		button.addEventListener("click", function(){
+			if(check){
+				var div = document.getElementById("divMenuResponsive");
+				div.setAttribute('class', 'divMenuResponsive');
+				document.getElementById('body').style.overflow = "scroll";
+				check = false;
+				return;
+			}
+			var div = document.getElementById("divMenuResponsive");
+			div.setAttribute('class', 'divres');
+			document.getElementById('body').style.overflow = "hidden";
+			check = true;
+		});
+</script>

@@ -4,10 +4,11 @@ module.exports = function(app){
 
     var forum = new mongoose.Schema(
         {
-            title: {type: String, required: true, unique: true},
+            title: {type: String, required: true, createIndexes:{unique: true}},
             introdution: {type: String},
             autor: String,
-            data: {type: Date, default: Date.now}
+            data: {type: Date, default: Date.now},
+            visualization: Number
         }
     ); 
     
