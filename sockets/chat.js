@@ -9,7 +9,7 @@ module.exports = function(io){
     
     //REDIS_URL to connect on heroku
     var redisURL = url.parse(process.env.REDISCLOUD_URL);
-    var redis = require('redis').createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+    var redis = require('redis').createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, auth_pass: "7NYVibfYYbdwnKEPXsm0FQfxEKczxRQH"});
 
     
     
