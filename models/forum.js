@@ -8,7 +8,7 @@ module.exports = function(app){
             introdution: {type: String},
             autor: String,
             data: {type: Date, default: Date.now},
-            visualization: Number
+            visualization: {type: Number, default: 0}
         }
     ); 
     

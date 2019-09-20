@@ -1,23 +1,14 @@
 module.exports = function(app){
 	var homeController = {
 		index: function(req, res){
-			res.render('home/index');
-		},
-		login: function(req, res){
-			var ticket = req.body.ticket;
-			
-			if(ticket){
-				//var user['tickets'] = [];
-				//req.session.ticket = user;
-				res.redirect('/comunidade'); 
+			var session = false;
+			if(req.session.user!=undefined){
+				session = true; 
+				res.render('home/index', {session: session});
 			}else{
-				res.redirect('/');
+				res.render('home/index', {session});
 			}
-			res.render('user/login');
-		},
-		logout: function(req, res){
-			req.session.destroy();
-			res.redirect('/');
+			
 		}
 	};
 	return homeController;

@@ -2,7 +2,6 @@ const KEY = "cpmoz.forum";
 const SECRET = "cpmoz";
 const days = 360000 * 24 * 7;
 const dbUrlLocal = "mongodb://localhost/cpmoz"
-var dbUrlOnline = "mongodb://heroku_7tzkz3jm:ds159641@ds159641.mlab.com:59641/heroku_7tzkz3jm"
 
 var express = require('express');
 var app = express();

@@ -2,7 +2,14 @@ module.exports = function(app){
 	var user = app.models.user;
 	var userController = {
 		login: function(req, res){
-			res.render('user/login');
+			var session = false;
+			if(req.session.user!=undefined){
+				session = true; 
+				res.render('user/login', {session: session, user: req.session.user.name});
+			}else{
+				res.render('user/login', {session});
+			}
+			
 		},
 		autentice: function(req, res, next){
 			var email = req.body.email;
@@ -25,7 +32,14 @@ module.exports = function(app){
 				});
 		},
 		getRegistry: function(req, res){
-			res.render('user/registry');
+			var session = false;
+			if(req.session.user!=undefined){
+				session = true;
+				res.render('user/registry', {session: session, user: req.session.user.name}); 
+			}else{
+				res.render('user/registry', {session});
+			}
+			
 		},
 		registry: function(req, res){
 

@@ -61,8 +61,25 @@ module.exports = function(app){
                 if(err){
                     console.log("Error Occur");
                 }else{
-                    var data = {forun: result, id: _id, userId: userId};
-                    res.render('forum/chat', data);
+                    var session = false;
+                    if(req.session.user!=undefined){
+                        session = true; 
+                    }
+                    var data = {forun: result, id: _id, userId: userId, session: session};
+                    
+                    
+                    forum.updateOne(query, 
+                        { $inc: 
+                            {
+                                visualization: 1
+                            } 
+                        },{multi: false} ,function(err, numAffected){
+                            var session = false;
+                            
+                            res.render('forum/chat', data);
+                        }
+                    );
+                    
                 }
             });
         }/*,

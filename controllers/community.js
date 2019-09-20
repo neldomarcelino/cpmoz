@@ -3,11 +3,14 @@ module.exports = function(app) {
 	
 	var communityController = {
 		index: function(req, res, next) {
+			var session = false;
+            if(req.session.user!=undefined){
+				session = true; 
+				res.render('community/index', {session: session, user: req.session.user.name});
+            }else{
+				res.render('community/index', {session});
+			}
 			
-			var user = req.session.user;
-			var users = user.tickets;	
-			var params = {user: user, users: users};		
-			res.render('community/index', params);
 		},
 		create: function(req, res){
 			var user = req.session.user;
