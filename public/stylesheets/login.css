@@ -3,7 +3,7 @@
     margin: 0 auto;
     margin-top: 0%;
     width: 36%;
-    height: 40%;
+    height: 60%;
     border-radius: 4%;
     padding: 3%;
 }
@@ -13,6 +13,7 @@
     padding-top: 10%; /* Location of the box */
     left: 0;
     top: 0;
+    margin: 0 auto;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */

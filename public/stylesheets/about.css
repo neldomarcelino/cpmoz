@@ -1,0 +1,17 @@
+.div-team{
+    width: 40%;
+    float: left;
+    margin-left: 7%;
+    position: relative;
+
+}
+.img-team{
+    position: absolute;
+    width: 100%;
+    background-color: rgba(82, 82, 82, 0.432);
+}
+.div-team span{
+    box-sizing: border-box;
+    width: 100%;
+    background-color:  rgb(255, 0, 0);
+}

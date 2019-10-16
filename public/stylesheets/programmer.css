@@ -1,0 +1,36 @@
+.divCommunity{
+    margin: 0 auto;
+    width: 70%;
+}
+.brevemente{
+    margin: 0 auto;
+    width: 50%;
+    color: rgb(25, 85, 20);
+    margin-top: 8%;
+    text-align: center;
+    font-size: 2em;
+}
+.pTextCommunity{
+    word-break: keep-all;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.6em;
+    text-align: justify;
+    font-weight: 500;
+    padding: 1.5%
+}
+@media (max-width: 430px){
+    .divCommunity{
+        position: relative;
+        top: 0em;
+        margin: 0 auto;
+        width: 100%;
+    }   
+    .pTextCommunity{
+        word-break: break-all;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 1.2em;
+        text-align: unset;
+        font-weight: 500;
+        padding: 3%
+    }
+}

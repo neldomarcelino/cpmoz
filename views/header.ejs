@@ -12,46 +12,53 @@
 		<link rel="stylesheet" type="text/css" href="/stylesheets/error.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/modal.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/forum.css" />
-		
+		<link rel="stylesheet" type="text/css" href="/stylesheets/programmer.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/about.css" />
+
+		<!--bootstrap-->
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+	
 	</head>
-<body id="body">	
-	<nav class="nav-menu">
-		<ul class="ul-menu">
-			<li class="li-title">
-				<a  href="/home"> CPMOZ </a>
-			</li>
-			<div id="divMenuResponsive" class="div-li-responsive">
-				<div class="subDivMenuResponsive">
-					<li id="forum" class="li-menu">
-						<a class="link-menu" href="/foruns"> Forúns </a>
-					</li>
-					<li id="programmer" class="li-menu">
-						<a class="link-menu" href="/community"> Programadores </a>
-					</li>
-					<% if (session) { %>
-						<li id="login" class="li-menu">
-							<a class="link-menu" href="/logout"> Sair </a>
-						</li>
-					<% } else { %>
-						<li id="login" class="li-menu">
-								<a class="link-menu" href="/login"> Entrar </a>
-							</li>
-					<% } %>
-					<li id="contact" class="li-menu">
-						<a class="link-menu" href="/contact"> Contacte-nos </a>
-					</li>
-					<li id="about" class="li-menu">
-						<a class="link-menu" href="/about"> Sobre </a>
-					</li>
-				</div>
-			</div>
-				<li class="li-hidden">
-					<a id="button" ><img class="button" src="/images/menu2.png"></a>
-				</li>
-			
-		</ul>
-		
-	</nav>
+<body id="body">
+	<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color: darkslategray">
+        <a class="navbar-brand" href="/home">CPMOZ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/foruns">Forúns <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/community">Programadores</a>
+            </li>
+            
+            
+			<% if (session) { %>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout" tabindex="-1" aria-disabled="false">Sair</a>
+				  </li>
+			<% } else { %>
+				<li class="nav-item">
+					<a class="nav-link" href="/login" tabindex="-1" aria-disabled="false">Entrar</a>
+				  </li>
+			<% } %>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+          </form>
+        </div>
+      </nav>
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="/bootstrap/js/bootstrap.min.js" ></script>
 	
 	<script>
 		var button = document.getElementById("button");
