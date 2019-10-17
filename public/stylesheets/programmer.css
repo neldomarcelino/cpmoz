@@ -11,7 +11,7 @@
     font-size: 2em;
 }
 .pTextCommunity{
-    word-break: keep-all;
+    word-break: normal;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.6em;
     text-align: justify;
@@ -26,10 +26,10 @@
         width: 100%;
     }   
     .pTextCommunity{
-        word-break: break-all;
+        word-break: normal;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-size: 1.2em;
-        text-align: unset;
+        text-align: justify;
         font-weight: 500;
         padding: 3%
     }
